@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OAuth2 Cognito Demo</title>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+</head>
+<body>
+	<section class="section">
+		<div class="container has-text-centered">
+			<div>
+				<h1 class="title">OAuth2 Spring Security Cognito Demo</h1>
+
+				<div sec:authorize="isAuthenticated()">
+					<div class="box">
+						Welcome, <strong th:text="${#authentication.name}"></strong>!<br /><br />
+						<a class="button info is-info" href="/info">More Information</a>
+						<br /><br />
+						<a class="button logout is-danger"
+						 th:href="@{https://douloginexample.auth.us-east-2.amazoncognito.com/logout?client_id=3kg8h54d512h519nu84mbamffu&logout_uri=http://localhost:8080/logout}">Logout</a>
+					</div>
+				</div>
+
+				<div sec:authorize="isAnonymous()">
+					<div class="box">
+						<a class="button login is-primary"
+							th:href="@{/oauth2/authorization/cognito-client-1}">Log in
+							with Amazon Cognito</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
