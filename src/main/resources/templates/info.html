@@ -21,15 +21,13 @@
 						<strong th:text="${#authentication}"></strong>
 						<br /><br />
 						<a class="button info is-info" href="/">Return home</a>
-						<a class="button logout is-danger"
-						   th:href="@{https://douloginexample.auth.us-east-2.amazoncognito.com/logout?client_id=3kg8h54d512h519nu84mbamffu&logout_uri=http://localhost:8080/logout}">Logout</a>
 					</div>
 				</div>
 
 				<div sec:authorize="isAnonymous()">
 					<div class="box">
 						<a class="button login is-primary"
-							th:href="@{/oauth2/authorization/cognito-client-1}">Log in with Amazon Cognito</a>
+							th:href="@{/oauth2/authorization/cognito-client}">Log in with Amazon Cognito</a>
 					</div>
 				</div>
 			</div>

@@ -23,6 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .and()
                 .oauth2Login()
-                .and().logout().logoutSuccessUrl("/").permitAll();
+                .and()
+                .logout()
+                .logoutSuccessUrl("/")
+                .permitAll();
     }
 }
