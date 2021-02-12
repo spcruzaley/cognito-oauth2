@@ -29,6 +29,8 @@ Open the browser and go to `http://localhost:8080` (*its configured in port 8080
 ### Reference Documentation
 For further reference, please consider the following sections:
 
+* [Understanding Amazon Cognito](https://aws.amazon.com/blogs/mobile/understanding-amazon-cognito-user-pool-oauth-2-0-grants/)
+
 * [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
 * [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.2/maven-plugin/reference/html/)
 * [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.2/maven-plugin/reference/html/#build-image)
