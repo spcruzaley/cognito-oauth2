@@ -2,37 +2,19 @@
 
 ## Login OAuth2 with Cognito
 
+![Cognito OAuth2 flow](readme-resources/CognitoOAuth2Flow.jpg)
+
 ## Previous steps
 
 Before to start with this integration, **you need to have an AWS account**, you create it ***[here](https://aws.amazon.com/)***. Basically, we need to create a **User Pool** and a **Client Application**.
 
 ### Creating an User Pool
 
-![Create User Pool - Step 1](readme-resources/CreateUserPool-1.png)
-
-![Create User Pool - Step 2](readme-resources/CreateUserPool-2.png)
-
-![Create User Pool - Step 3](readme-resources/CreateUserPool-3.png)
-
-![Create User Pool - Step 4](readme-resources/CreateUserPool-4.png)
+Follow the steps [from here](readme-resources/user-pool/)
 
 ### Creating an Application Client
 
-![Create App Client - Step 1](readme-resources/CreateAppClient-1.png)
-
-![Create App Client - Step 2](readme-resources/CreateAppClient-2.png)
-
-![Create App Client - Step 3](readme-resources/CreateAppClient-3.png)
-
-![Create App Client - Step 4](readme-resources/CreateAppClient-4.png)
-
-![Create App Client - Step 5](readme-resources/CreateAppClient-5.png)
-
-![Create App Client - Step 6](readme-resources/CreateAppClient-6.png)
-
-
-*OAuth2 flow*
-![Cognito OAuth2 flow](readme-resources/CognitoOAuth2Flow.jpg) 
+Follow the steps [from here](readme-resources/app-client/)
 
 ## Execution
 
@@ -55,10 +37,6 @@ Open the browser and go to `http://localhost:8080` (*its configured in port 8080
 
 *Index page logged in*
 ![Logged in](readme-resources/CognitoLogin-3.png)
-
-*Authentication information*
-![Auth Information](readme-resources/CognitoLogin-4.png)
-
 
 ### Reference Documentation
 For further reference, please consider the following sections:
