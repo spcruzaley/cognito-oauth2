@@ -36,7 +36,7 @@
 				<div sec:authorize="isAuthenticated()">
 					<div class="box"> Welcome, <strong th:text="${#authentication.name}"></strong>!<br /><br />
 						<!--a class="button info is-info" href="/info">Show auth info</a-->
-						<strong><a class="link token-info is-info" href="javascript: toggleInfo('divAuthInfo');">Show Authentication Info</a></strong>
+						<strong><a class="link token-info is-info" href="javascript: toggleInfo('divAuthInfo');">>>> Show Authentication Info <<<</a></strong>
 						<br />
 						<div id="divAuthInfo" sec:authorize="isAuthenticated()">
 							<div class="box">
@@ -49,12 +49,14 @@
 								<strong>Token Type: </strong><span th:text="${tokenInformation.token_type}"></span><br />
 								<strong>Expiration: </strong><span th:text="${tokenInformation.expiration}"></span><br />
 							</div>
-							<strong><a class="link token-info is-info" href="javascript: toggleInfo('divToken');">Show Token:</a></strong>
+							<strong><a class="link token-info is-info" href="javascript: toggleInfo('divToken');">>>> Show Token <<<</a></strong>
 							<div id="divToken">
 								<span th:text="${tokenInformation.token}"></span>
 							</div>
 						</div>
 						<a class="button token-info is-info" th:href="@{/oauth2/authorization/cognito-client-for-token}">Generate Token</a>
+						<br /><br />
+						<a class="button token-info is-info" href="/restrictedInfo">Show Restricted Info</a>
 						<br /><br />
 						<a class="button logout is-danger"
 						   th:href="@{https://douloginexample.auth.us-east-2.amazoncognito.com/logout?client_id=3kg8h54d512h519nu84mbamffu&logout_uri=http://localhost:8080/logout}">Logout</a>

@@ -11,16 +11,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
  
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*http.authorizeRequests()
+        http.authorizeRequests()
                 .antMatchers("/**")
                 .authenticated()
-                .and()
-                .oauth2Login()
-                .and()
-                .logout()
-                .logoutSuccessUrl("/")
-                .permitAll();*/
-        http.authorizeRequests()
                 .and()
                 .oauth2Login()
                 .and()

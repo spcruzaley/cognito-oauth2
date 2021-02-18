@@ -13,12 +13,26 @@
 	<section class="section">
 		<div class="container has-text-centered">
 			<div>
-				<h1 class="title">OAuth2 Spring Security Cognito Demo</h1>
+				<h1 class="title">Restricted info</h1>
 
 				<div sec:authorize="isAuthenticated()">
 					<div class="box">
-						<h1>Authentication information:</h1><br /><br />
-						<strong th:text="${#authentication}"></strong>
+						<table border="1px">
+							<thead>
+							<tr>
+								<th>ID</th>
+								<th>Name</th>
+								<th>Mail</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr th:each="employee : ${employees}">
+								<td><span th:text="${employee.id}"></span></td>
+								<td><span th:text="${employee.name}"></span></td>
+								<td><span th:text="${employee.email}"></span></td>
+							</tr>
+							</tbody>
+						</table>
 						<br /><br />
 						<a class="button info is-info" href="/">Return home</a>
 					</div>
@@ -26,6 +40,8 @@
 
 				<div sec:authorize="isAnonymous()">
 					<div class="box">
+						<h1 class="title">You're not authorized to see this content!</h1>
+						<br />
 						<a class="button login is-primary"
 							th:href="@{/oauth2/authorization/cognito-client}">Log in with Amazon Cognito</a>
 					</div>
