@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>OAuth2 Cognito Demo</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			document.getElementById("divAuthInfo").style.display = "none";
+
+			if(document.getElementById("divToken")) {
+				document.getElementById("divToken").style.display = "none";
+			}
+		});
+
+		function toggleInfo(divElement) {
+			var element = document.getElementById(divElement);
+
+			if (element.style.display === "none") {
+				element.style.display = "block";
+			} else {
+				element.style.display = "none";
+			}
+		}
+	</script>
+</head>
+<body>
+	<section class="section">
+		<div class="container has-text-centered">
+			<div>
+				<h1 class="title">OAuth2 Spring Security Cognito Demo</h1>
+
+				<div sec:authorize="isAuthenticated()">
+					<div class="box"> Welcome, <strong th:text="${#authentication.name}"></strong>!<br /><br />
+						<!--a class="button info is-info" href="/info">Show auth info</a-->
+						<strong><a class="link token-info is-info" href="javascript: toggleInfo('divAuthInfo');">>>> Show Authentication Info <<<</a></strong>
+						<br />
+						<div id="divAuthInfo" sec:authorize="isAuthenticated()">
+							<div class="box">
+								<strong th:text="${#authentication}"></strong>
+							</div>
+						</div>
+						<br />
+						<div class="box" th:if="${tokenInformation}">
+							<div>
+								<strong>Token Type: </strong><span th:text="${tokenInformation.token_type}"></span><br />
+								<strong>Expiration: </strong><span th:text="${tokenInformation.expiration}"></span><br />
+							</div>
+							<strong><a class="link token-info is-info" href="javascript: toggleInfo('divToken');">>>> Show Token <<<</a></strong>
+							<div id="divToken">
+								<span th:text="${tokenInformation.token}"></span>
+							</div>
+						</div>
+						<a class="button token-info is-info" th:href="@{/oauth2/authorization/cognito-client-for-token}">Generate Token</a>
+						<br /><br />
+						<a class="button token-info is-info" href="/restrictedInfo">Show Restricted Info</a>
+						<br /><br />
+						<a class="button logout is-danger"
+						   th:href="@{https://douloginexample.auth.us-east-2.amazoncognito.com/logout?client_id=2s092rhdehnag7ocntdib7c2mh&logout_uri=http://localhost:8080/logout}">Logout</a>
+						<br /><br />
+					</div>
+				</div>
+
+				<div sec:authorize="isAnonymous()">
+					<div class="box">
+						<a class="button login is-primary"
+							th:href="@{/oauth2/authorization/cognito-client}">Log in
+							with Amazon Cognito</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

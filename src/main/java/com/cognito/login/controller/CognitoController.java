@@ -24,9 +24,7 @@ public class CognitoController {
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     public Object info(ModelAndView mav) {
         logger.info("Info method");
-
         mav.setViewName("info");
-        //mav.addObject("someKey", "someValue");
 
         return mav;
     }
@@ -35,10 +33,8 @@ public class CognitoController {
     public Object home(HttpServletRequest request, HttpServletResponse response,
                        Authentication authentication, Principal principal) throws IOException {
         logger.info("Home method");
-
         ModelAndView mav = new ModelAndView();
         mav.setViewName("home");
-        //mav.addObject("someKey", "someValue");
 
         return mav;
     }
