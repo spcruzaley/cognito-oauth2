@@ -1,78 +1,102 @@
+<!--
+      _/_/_/  _/_/_/      _/_/_/                                          _/
+   _/        _/    _/  _/        _/  _/_/  _/    _/  _/_/_/_/    _/_/_/  _/    _/_/    _/    _/
+    _/_/    _/_/_/    _/        _/_/      _/    _/      _/    _/    _/  _/  _/_/_/_/  _/    _/
+       _/  _/        _/        _/        _/    _/    _/      _/    _/  _/  _/        _/    _/
+_/_/_/    _/          _/_/_/  _/          _/_/_/  _/_/_/_/    _/_/_/  _/    _/_/_/    _/_/_/
+                                                                                         _/
+                                                                                    _/_/
+April 2021
+-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>OAuth2 Cognito Demo</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			document.getElementById("divAuthInfo").style.display = "none";
-
-			if(document.getElementById("divToken")) {
-				document.getElementById("divToken").style.display = "none";
-			}
-		});
-
-		function toggleInfo(divElement) {
-			var element = document.getElementById(divElement);
-
-			if (element.style.display === "none") {
-				element.style.display = "block";
-			} else {
-				element.style.display = "none";
-			}
-		}
-	</script>
+<title>Basic 86</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="styles/layout.css" type="text/css">
+<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 </head>
 <body>
-	<section class="section">
-		<div class="container has-text-centered">
-			<div>
-				<h1 class="title">OAuth2 Spring Security Cognito Demo</h1>
-
-				<div sec:authorize="isAuthenticated()">
-					<div class="box"> Welcome, <strong th:text="${#authentication.name}"></strong>!<br /><br />
-						<!--a class="button info is-info" href="/info">Show auth info</a-->
-						<strong><a class="link token-info is-info" href="javascript: toggleInfo('divAuthInfo');">>>> Show Authentication Info <<<</a></strong>
-						<br />
-						<div id="divAuthInfo" sec:authorize="isAuthenticated()">
-							<div class="box">
-								<strong th:text="${#authentication}"></strong>
-							</div>
-						</div>
-						<br />
-						<div class="box" th:if="${tokenInformation}">
-							<div>
-								<strong>Token Type: </strong><span th:text="${tokenInformation.token_type}"></span><br />
-								<strong>Expiration: </strong><span th:text="${tokenInformation.expiration}"></span><br />
-							</div>
-							<strong><a class="link token-info is-info" href="javascript: toggleInfo('divToken');">>>> Show Token <<<</a></strong>
-							<div id="divToken">
-								<span th:text="${tokenInformation.token}"></span>
-							</div>
-						</div>
-						<a class="button token-info is-info" th:href="@{/oauth2/authorization/cognito-client-for-token}">Generate Token</a>
-						<br /><br />
-						<a class="button token-info is-info" href="/restrictedInfo">Show Restricted Info</a>
-						<br /><br />
-						<a class="button logout is-danger"
-						   th:href="@{https://douloginexample.auth.us-east-2.amazoncognito.com/logout?client_id=3kg8h54d512h519nu84mbamffu&logout_uri=http://localhost:8080/logout}">Logout</a>
-						<br /><br />
-					</div>
-				</div>
-
-				<div sec:authorize="isAnonymous()">
-					<div class="box">
-						<a class="button login is-primary"
-							th:href="@{/oauth2/authorization/cognito-client}">Log in
-							with Amazon Cognito</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1><a href="#">Cognito Login Integration</a></h1>
+      <h2>Using SpringBoot</h2>
+    </div>
+    <div id="hgroup_2">
+      <img src="images/dou-logo-250.png"><br />
+    </div>
+  </header>
+</div>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <!-- main content -->
+    <div id="homepage">
+      <!-- services area -->
+      <section id="services" class="clear">
+        <!-- Menu -->
+        <article class="one_third">
+          <h2>Menu</h2>
+          <div sec:authorize="isAnonymous()">
+            <a th:href="@{/oauth2/authorization/cognito-client}">Login &raquo;</a><br />
+          </div>
+          <div sec:authorize="isAuthenticated()">
+            <a th:href="@{https://douloginexample.auth.us-east-2.amazoncognito.com/logout?client_id=2s092rhdehnag7ocntdib7c2mh&logout_uri=http://localhost:8080/logout}">Logout &raquo;</a><br />
+          </div>
+          <a href="/restrictedInfo">Show restricted information &raquo;</a>
+          <br /><hr /><br />
+        </article>
+        <!-- Content -->
+        <!-- When is logged in with Cognito -->
+        <div sec:authorize="isAuthenticated()">
+          <article class="three_third lastbox">
+            <h2>Login Information</h2>
+            <img th:src="${userinfo.imagePath}" style="border: none;" />
+            <table class="three_third lastbox">
+              <tr>
+                <td><strong>Cognito username:</strong></td>
+                <td><span th:text="${userinfo.username}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>email:</strong></td>
+                <td><span th:text="${userinfo.email}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Rol:</strong></td>
+                <td><span th:text="${userinfo.rol}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Provider user id:</strong></td>
+                <td><span th:text="${userinfo.providerInformation.userId}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Provider name:</strong></td>
+                <td><span th:text="${userinfo.providerInformation.providerName}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Provider type:</strong></td>
+                <td><span th:text="${userinfo.providerInformation.providerType}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Provider issuer:</strong></td>
+                <td><span th:text="${userinfo.providerInformation.issuer}"></span></td>
+              </tr>
+            </table>
+          </article>
+        </div>
+      </section>
+      <!-- / One Quarter -->
+    </div>
+    <!-- / content body -->
+  </div>
+</div>
+<!-- Footer -->
+<div class="wrapper row3">
+  <footer id="footer" class="clear">
+    <p class="fl_left">SpringDay - Cognito Authentication usign Spring Boot</p>
+  </footer>
+</div>
 </body>
 </html>

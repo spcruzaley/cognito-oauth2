@@ -1,53 +1,60 @@
+<!--
+      _/_/_/  _/_/_/      _/_/_/                                          _/
+   _/        _/    _/  _/        _/  _/_/  _/    _/  _/_/_/_/    _/_/_/  _/    _/_/    _/    _/
+    _/_/    _/_/_/    _/        _/_/      _/    _/      _/    _/    _/  _/  _/_/_/_/  _/    _/
+       _/  _/        _/        _/        _/    _/    _/      _/    _/  _/  _/        _/    _/
+_/_/_/    _/          _/_/_/  _/          _/_/_/  _/_/_/_/    _/_/_/  _/    _/_/_/    _/_/_/
+                                                                                         _/
+                                                                                    _/_/
+April 2021
+-->
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" dir="ltr" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OAuth2 Cognito Demo</title>
-
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+<title>Basic 86</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="styles/layout.css" type="text/css">
+<!--[if lt IE 9]><script src="scripts/html5shiv.js"></script><![endif]-->
 </head>
 <body>
-	<section class="section">
-		<div class="container has-text-centered">
-			<div>
-				<h1 class="title">Restricted info</h1>
-
-				<div sec:authorize="isAuthenticated()">
-					<div class="box">
-						<table border="1px">
-							<thead>
-							<tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th>Mail</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr th:each="employee : ${employees}">
-								<td><span th:text="${employee.id}"></span></td>
-								<td><span th:text="${employee.name}"></span></td>
-								<td><span th:text="${employee.email}"></span></td>
-							</tr>
-							</tbody>
-						</table>
-						<br /><br />
-						<a class="button info is-info" href="/">Return home</a>
-					</div>
-				</div>
-
-				<div sec:authorize="isAnonymous()">
-					<div class="box">
-						<h1 class="title">You're not authorized to see this content!</h1>
-						<br />
-						<a class="button login is-primary"
-							th:href="@{/oauth2/authorization/cognito-client}">Log in with Amazon Cognito</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<div class="wrapper row1">
+  <header id="header" class="clear">
+    <div id="hgroup">
+      <h1>Restricted information</h1>
+    </div>
+  </header>
+</div>
+<!-- content -->
+<div class="wrapper row2">
+  <div id="container" class="clear">
+    <div id="homepage">
+      <!-- services area -->
+      <section id="services" class="clear">
+        <!-- Menu -->
+        <article class="one_third">
+          <h2>Menu</h2>
+          <a href="/">Home &raquo;</a><br />
+          <br /><hr /><br />
+        </article>
+        <!-- Content -->
+        <!-- When is logged in-->
+        <div sec:authorize="isAnonymous()">
+          <img src="images/restricted-image.jpeg" />
+        </div>
+        <div sec:authorize="isAuthenticated()">
+          <img src="images/allowed-image.jpeg" />
+        </div>
+      </section>
+      <!-- / One Quarter -->
+    </div>
+    <!-- / content body -->
+  </div>
+</div>
+<!-- Footer -->
+<div class="wrapper row3">
+  <footer id="footer" class="clear">
+    <p class="fl_left">SpringDay - Cognito Authentication usign Spring Boot</p>
+  </footer>
+</div>
 </body>
 </html>
