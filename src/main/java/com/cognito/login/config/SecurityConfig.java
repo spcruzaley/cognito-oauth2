@@ -13,7 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         System.out.println("entering to HttpSecurity method");
         http.authorizeRequests()
-                .antMatchers("/templates/**", "/restrictedInfo")
+                .antMatchers("/templates/**")
                 .authenticated()
                 .and()
                 .oauth2Login()

@@ -1,5 +1,15 @@
+<!--
+      _/_/_/  _/_/_/      _/_/_/                                          _/
+   _/        _/    _/  _/        _/  _/_/  _/    _/  _/_/_/_/    _/_/_/  _/    _/_/    _/    _/
+    _/_/    _/_/_/    _/        _/_/      _/    _/      _/    _/    _/  _/  _/_/_/_/  _/    _/
+       _/  _/        _/        _/        _/    _/    _/      _/    _/  _/  _/        _/    _/
+_/_/_/    _/          _/_/_/  _/          _/_/_/  _/_/_/_/    _/_/_/  _/    _/_/_/    _/_/_/
+                                                                                         _/
+                                                                                    _/_/
+April 2021
+-->
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 <title>Basic 86</title>
 <meta charset="UTF-8">
@@ -28,8 +38,11 @@
         </article>
         <!-- Content -->
         <!-- When is logged in-->
-        <div>
-          <img src="images/restricted.jpeg" />
+        <div sec:authorize="isAnonymous()">
+          <img src="images/restricted-image.jpeg" />
+        </div>
+        <div sec:authorize="isAuthenticated()">
+          <img src="images/allowed-image.jpeg" />
         </div>
       </section>
       <!-- / One Quarter -->

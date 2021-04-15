@@ -1,3 +1,13 @@
+<!--
+      _/_/_/  _/_/_/      _/_/_/                                          _/
+   _/        _/    _/  _/        _/  _/_/  _/    _/  _/_/_/_/    _/_/_/  _/    _/_/    _/    _/
+    _/_/    _/_/_/    _/        _/_/      _/    _/      _/    _/    _/  _/  _/_/_/_/  _/    _/
+       _/  _/        _/        _/        _/    _/    _/      _/    _/  _/  _/        _/    _/
+_/_/_/    _/          _/_/_/  _/          _/_/_/  _/_/_/_/    _/_/_/  _/    _/_/_/    _/_/_/
+                                                                                         _/
+                                                                                    _/_/
+April 2021
+-->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
@@ -34,8 +44,8 @@
           </div>
           <div sec:authorize="isAuthenticated()">
             <a th:href="@{https://douloginexample.auth.us-east-2.amazoncognito.com/logout?client_id=2s092rhdehnag7ocntdib7c2mh&logout_uri=http://localhost:8080/logout}">Logout &raquo;</a><br />
-            <a href="/restrictedInfo">Show restricted information &raquo;</a>
           </div>
+          <a href="/restrictedInfo">Show restricted information &raquo;</a>
           <br /><hr /><br />
         </article>
         <!-- Content -->
@@ -43,26 +53,37 @@
         <div sec:authorize="isAuthenticated()">
           <article class="three_third lastbox">
             <h2>Login Information</h2>
-            <img src="images/cognito.png" alt="">
-            <p>Vestibulumaccumsan egestibulum eu justo convallis augue estas aenean elit intesque sed. Facilispede estibulum nulla orna nisl velit elit ac aliquat non tincidunt. Namjusto cras urna urnaretra lor urna neque sed quis orci nulla. Laoremut vitae doloreet condimentumst phasellentes dolor ut a ipsum id consectetus. Inpede cumst vitae ris tellentesque fring intesquet.</p>
-          </article>
-          <!-- When is logged in with Google -->
-          <article class="three_third lastbox">
-            <h2>Login Information</h2>
-            <img src="images/google.png" alt="">
-            <p>Vestibulumaccumsan egestibulum eu justo convallis augue estas aenean elit intesque sed. Facilispede estibulum nulla orna nisl velit elit ac aliquat non tincidunt. Namjusto cras urna urnaretra lor urna neque sed quis orci nulla. Laoremut vitae doloreet condimentumst phasellentes dolor ut a ipsum id consectetus. Inpede cumst vitae ris tellentesque fring intesquet.</p>
-          </article>
-          <!-- When is logged in with Facebook -->
-          <article class="three_third lastbox">
-            <h2>Login Information</h2>
-            <img src="images/facebook.png" alt="">
-            <p>Vestibulumaccumsan egestibulum eu justo convallis augue estas aenean elit intesque sed. Facilispede estibulum nulla orna nisl velit elit ac aliquat non tincidunt. Namjusto cras urna urnaretra lor urna neque sed quis orci nulla. Laoremut vitae doloreet condimentumst phasellentes dolor ut a ipsum id consectetus. Inpede cumst vitae ris tellentesque fring intesquet.</p>
-          </article>
-          <!-- When is logged in with Amazon -->
-          <article class="three_third lastbox">
-            <h2>Login Information</h2>
-            <img src="images/amazon.png" alt="">
-            <p>Vestibulumaccumsan egestibulum eu justo convallis augue estas aenean elit intesque sed. Facilispede estibulum nulla orna nisl velit elit ac aliquat non tincidunt. Namjusto cras urna urnaretra lor urna neque sed quis orci nulla. Laoremut vitae doloreet condimentumst phasellentes dolor ut a ipsum id consectetus. Inpede cumst vitae ris tellentesque fring intesquet.</p>
+            <img th:src="${userinfo.imagePath}" style="border: none;" />
+            <table class="three_third lastbox">
+              <tr>
+                <td><strong>Cognito username:</strong></td>
+                <td><span th:text="${userinfo.username}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>email:</strong></td>
+                <td><span th:text="${userinfo.email}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Rol:</strong></td>
+                <td><span th:text="${userinfo.rol}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Provider user id:</strong></td>
+                <td><span th:text="${userinfo.providerInformation.userId}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Provider name:</strong></td>
+                <td><span th:text="${userinfo.providerInformation.providerName}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Provider type:</strong></td>
+                <td><span th:text="${userinfo.providerInformation.providerType}"></span></td>
+              </tr>
+              <tr>
+                <td><strong>Provider issuer:</strong></td>
+                <td><span th:text="${userinfo.providerInformation.issuer}"></span></td>
+              </tr>
+            </table>
           </article>
         </div>
       </section>
