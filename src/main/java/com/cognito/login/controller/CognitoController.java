@@ -1,9 +1,14 @@
 package com.cognito.login.controller;
 
+import com.cognito.login.HttpHelper;
+import com.cognito.login.model.TokenInformation;
 import com.cognito.login.model.UserInfo;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.logging.Logger;
+import javax.servlet.http.HttpServletRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 public class CognitoController {
 
     Logger logger = Logger.getLogger(CognitoController.class.getName());
+
+    @Autowired
+    private HttpHelper httpHelper;
 
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     public Object info(ModelAndView mav) {
@@ -36,6 +44,26 @@ public class CognitoController {
         userInfo.setUsername(Objects.toString(username, "Username no provided"));
 
         model.addAttribute("userinfo", userInfo);
+        return mav;
+    }
+
+    @RequestMapping(value = "/code", method = RequestMethod.GET)
+    public Object code(@RequestParam(value = "code", required = false) String code,
+                       Authentication authentication, HttpServletRequest request, ModelAndView mav) throws IOException {
+        logger.info("Home method");
+        TokenInformation tokenInformation = null;
+
+        if(code != null) {
+            logger.info("Code gotten: " + code);
+            logger.info("Getting Token");
+
+            tokenInformation = httpHelper.okHttpClient(code);
+            request.getSession().setAttribute("tokenInformation", tokenInformation);
+        }
+
+        mav.setViewName("home");
+        mav.addObject("tokenInformation", tokenInformation);
+
         return mav;
     }
 

@@ -13,7 +13,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //For Step two
         http.authorizeRequests()
-                .antMatchers("/**")
+                .antMatchers("/templates/**")
                 .authenticated()
                 .and()
                 .oauth2Login()

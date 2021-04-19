@@ -34,7 +34,14 @@ April 2021
       <section id="services" class="clear">
         <!-- Menu -->
         <article class="one_third">
-          <a href="/info">Section with information &raquo;</a>
+          <h2>Menu</h2>
+          <div sec:authorize="isAnonymous()">
+            <a th:href="@{/oauth2/authorization/cognito-client}">Login &raquo;</a><br />
+          </div>
+          <div sec:authorize="isAuthenticated()">
+            <a th:href="@{https://misuperdominio.auth.us-east-2.amazoncognito.com/logout?client_id=5v92qhnpu49vpue0mu70o4q0hr&logout_uri=http://localhost:8080/logout}">Logout &raquo;</a><br />
+          </div>
+          <a href="/info">Show restricted information &raquo;</a>
           <br /><hr /><br />
         </article>
         <!-- Content -->
