@@ -1,15 +1,7 @@
 package com.cognito.login;
 
-import org.junit.Ignore;
-import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+@SpringBootTest(classes = CognitoLoginApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CognitoLoginApplicationTests {
-
-	@Ignore
-	@Test
-	void contextLoads() {
-	}
-
 }

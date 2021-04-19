@@ -4,9 +4,6 @@ public class UserInfo {
 
     private String email;
     private String username;
-    private String rol;
-    private String imagePath;
-    private ProviderInformation providerInformation;
 
     public UserInfo() {
     }
@@ -27,38 +24,11 @@ public class UserInfo {
         this.username = username;
     }
 
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
-    public ProviderInformation getProviderInformation() {
-        return providerInformation;
-    }
-
-    public void setProviderInformation(ProviderInformation providerInformation) {
-        this.providerInformation = providerInformation;
-    }
-
     @Override
     public String toString() {
         return "UserInfo{" +
                 "email='" + email + '\'' +
                 ", username='" + username + '\'' +
-                ", rol='" + rol + '\'' +
-                ", imagePath='" + imagePath + '\'' +
-                ", providerInformation=" + providerInformation +
                 '}';
     }
 }

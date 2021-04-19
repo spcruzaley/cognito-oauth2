@@ -21,11 +21,7 @@ April 2021
 <div class="wrapper row1">
   <header id="header" class="clear">
     <div id="hgroup">
-      <h1><a href="#">Cognito Login Integration</a></h1>
-      <h2>Using SpringBoot</h2>
-    </div>
-    <div id="hgroup_2">
-      <img src="images/dou-logo-250.png"><br />
+      <h1><a href="#">SpringBoot application</a></h1>
     </div>
   </header>
 </div>
@@ -38,54 +34,23 @@ April 2021
       <section id="services" class="clear">
         <!-- Menu -->
         <article class="one_third">
-          <h2>Menu</h2>
-          <div sec:authorize="isAnonymous()">
-            <a th:href="@{/oauth2/authorization/cognito-client}">Login &raquo;</a><br />
-          </div>
-          <div sec:authorize="isAuthenticated()">
-            <a th:href="@{https://douloginexample.auth.us-east-2.amazoncognito.com/logout?client_id=2s092rhdehnag7ocntdib7c2mh&logout_uri=http://localhost:8080/logout}">Logout &raquo;</a><br />
-          </div>
-          <a href="/restrictedInfo">Show restricted information &raquo;</a>
+          <a href="/info">Section with information &raquo;</a>
           <br /><hr /><br />
         </article>
         <!-- Content -->
-        <!-- When is logged in with Cognito -->
-        <div sec:authorize="isAuthenticated()">
-          <article class="three_third lastbox">
-            <h2>Login Information</h2>
-            <img th:src="${userinfo.imagePath}" style="border: none;" />
-            <table class="three_third lastbox">
-              <tr>
-                <td><strong>Cognito username:</strong></td>
-                <td><span th:text="${userinfo.username}"></span></td>
-              </tr>
-              <tr>
-                <td><strong>email:</strong></td>
-                <td><span th:text="${userinfo.email}"></span></td>
-              </tr>
-              <tr>
-                <td><strong>Rol:</strong></td>
-                <td><span th:text="${userinfo.rol}"></span></td>
-              </tr>
-              <tr>
-                <td><strong>Provider user id:</strong></td>
-                <td><span th:text="${userinfo.providerInformation.userId}"></span></td>
-              </tr>
-              <tr>
-                <td><strong>Provider name:</strong></td>
-                <td><span th:text="${userinfo.providerInformation.providerName}"></span></td>
-              </tr>
-              <tr>
-                <td><strong>Provider type:</strong></td>
-                <td><span th:text="${userinfo.providerInformation.providerType}"></span></td>
-              </tr>
-              <tr>
-                <td><strong>Provider issuer:</strong></td>
-                <td><span th:text="${userinfo.providerInformation.issuer}"></span></td>
-              </tr>
-            </table>
-          </article>
-        </div>
+        <article class="three_third lastbox">
+          <h2>Login Information</h2>
+          <table class="three_third lastbox">
+            <tr>
+              <td><strong>Username:</strong></td>
+              <td><span th:text="${userinfo.username}"></span></td>
+            </tr>
+            <tr>
+              <td><strong>email:</strong></td>
+              <td><span th:text="${userinfo.email}"></span></td>
+            </tr>
+          </table>
+        </article>
       </section>
       <!-- / One Quarter -->
     </div>
@@ -95,7 +60,7 @@ April 2021
 <!-- Footer -->
 <div class="wrapper row3">
   <footer id="footer" class="clear">
-    <p class="fl_left">SpringDay - Cognito Authentication usign Spring Boot</p>
+    <p class="fl_left">Spring Boot Application</p>
   </footer>
 </div>
 </body>

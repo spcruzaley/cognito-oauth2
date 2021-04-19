@@ -20,7 +20,7 @@ April 2021
 <div class="wrapper row1">
   <header id="header" class="clear">
     <div id="hgroup">
-      <h1>Restricted information</h1>
+      <h1>Important information to be shown</h1>
     </div>
   </header>
 </div>
@@ -38,12 +38,7 @@ April 2021
         </article>
         <!-- Content -->
         <!-- When is logged in-->
-        <div sec:authorize="isAnonymous()">
-          <img src="images/restricted-image.jpeg" />
-        </div>
-        <div sec:authorize="isAuthenticated()">
-          <img src="images/allowed-image.jpeg" />
-        </div>
+        <img src="images/image.jpeg" />
       </section>
       <!-- / One Quarter -->
     </div>
@@ -53,7 +48,7 @@ April 2021
 <!-- Footer -->
 <div class="wrapper row3">
   <footer id="footer" class="clear">
-    <p class="fl_left">SpringDay - Cognito Authentication usign Spring Boot</p>
+    <p class="fl_left">Spring Boot Application</p>
   </footer>
 </div>
 </body>
