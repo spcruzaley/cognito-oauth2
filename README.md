@@ -33,13 +33,16 @@ $ mvn clean spring-boot:run
 
 Open the browser and go to `http://localhost:8080` (*its configured in port 8080 by default*)
 
-*Index page*
+## Index page
+
 ![Index page](readme-resources/CognitoLogin-1.png)
 
-*Login form*
+## Login form
+
 ![Login form](readme-resources/CognitoLogin-2.png)
 
-*Index page logged in*
+## Index page logged in
+
 ![Logged in](readme-resources/CognitoLogin-3.png)
 
 ### Reference Documentation
