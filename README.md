@@ -18,13 +18,11 @@ Follow the steps [from here](readme-resources/app-client/)
 
 ## Execution
 
-### Before execution
-
-> #### If you want to execute this app with a Docker image, you can [check out this repository](https://github.com/spcruzaley/cognito-oauth2-docker) created specifically to run this app using Docker.
 
 ### Requirements
 * JDK 11
 * Maven 3.*
+* Spring 2.*
 
 Execution steps
 ```bash
