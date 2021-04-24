@@ -34,7 +34,7 @@ You can log in whit whatever account you want.
 
 After that you need to get the information sent by the Service Provider you chose and extract the Token ID, this is just an example:
 
-![Initial page](readme-resources/Token.png)
+![Initial page](readme-resources/TokenGenerated.png)
 
 NOTE: The Token can be extracted from Authorization object (_Not need to do any additional POST call_)
 
