@@ -52,14 +52,12 @@ The winner will be the first person that makes the POST call to the endpoint, to
 
 ## Execution with maven
 
-Using maven
 ```bash
 $ mvn clean spring-boot:run
 ```
 
 ## Execution with java
 
-Using maven
 ```bash
 $ mvn clean package
 $ java -jar target/<ARTIFACT_NAME>.jar
@@ -67,7 +65,6 @@ $ java -jar target/<ARTIFACT_NAME>.jar
 
 ## Execution with Docker
 
-Using maven
 ```bash
 $ ./run.sh
 ```
