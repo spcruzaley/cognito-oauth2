@@ -11,7 +11,7 @@
 	<groupId>com.cognito.login</groupId>
 	<artifactId>cognitoLogin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>cognitoLogin</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>

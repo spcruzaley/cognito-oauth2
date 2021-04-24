@@ -1,69 +1,71 @@
-# Getting Started
+# Cognito Challenge
 
-## Login OAuth2 with Cognito
+In this mini challenge you need to add the missing configuration to add a login link to Cognito.
 
-![Cognito OAuth2 flow](readme-resources/CognitoOAuth2Flow.jpg)
+This application doesn't have any configuration, if you run it you will to see something like this
 
-## Previous steps
+![Initial page](readme-resources/InitialState.png)
 
-Before to start with this integration, **you need to have an AWS account**, you create it ***[here](https://aws.amazon.com/)***. Basically, we need to create a **User Pool** and a **Client Application**.
+So, here are the steps to follow
 
-### Creating an User Pool
+## Steps
 
-Follow the steps [from here](readme-resources/user-pool/)
+### Step 1
 
-### Creating an Application Client
+You need to add the missing configuration to this project in order to add the login link to Cognito and generate a valid Token.
 
-Follow the steps [from here](readme-resources/app-client/)
+You need to use this information for Cognito configurations
 
-## Execution
+| Property | value |
+| :---: | :---: |
+| App Client ID | 2s092rhdehnag7ocntdib7c2mh |
+| App Secret ID | 1bslbp41j8cvkit7a9pl45tfjuk430oq8gavopa5f5bk6rt6a300 |
+| App Name | appClient |
 
-### Before execution
+### Step 2
 
-> #### If you want to execute this app with a Docker image, you can [check out this repository](https://github.com/spcruzaley/cognito-oauth2-docker) created specifically to run this app using Docker.
+Once you added all the missing configuration the login link should be show you this Cognito Login page
 
-### Requirements
-* JDK 11
-* Maven 3.*
+![Initial page](readme-resources/Login.png)
 
-Execution steps
+You can log in whit whatever account you want. 
+
+### Step 3
+
+After that you need to get the information sent by the Service Provider you chose and extract the Token ID, this is just an example:
+
+![Initial page](readme-resources/Token.png)
+
+NOTE: The Token can be extracted from Authorization object (_Not need to do any additional POST call_)
+
+### Final Step
+
+You need to send a POST call to this API `http://18.116.14.98/token-validation` sending in the `Authorization` header the Token gotten in the previous step. If you send a valid token, you will se a response like this:
+
+![Initial page](readme-resources/POST-Call.png)
+
+That's it.
+
+The winner will be the first person that makes the POST call to the endpoint, to validate that the information will be saved in a DB with the time. 
+
+## Execution with maven
+
+Using maven
 ```bash
 $ mvn clean spring-boot:run
 ```
 
-Open the browser and go to `http://localhost:8080` (*its configured in port 8080 by default*)
+## Execution with java
 
-*Index page*
-![Index page](readme-resources/CognitoLogin-1.png)
+Using maven
+```bash
+$ mvn clean package
+$ java -jar target/<ARTIFACT_NAME>.jar
+```
 
-*Login form*
-![Login form](readme-resources/CognitoLogin-2.png)
+## Execution with Docker
 
-*Index page logged in*
-![Logged in](readme-resources/CognitoLogin-3.png)
-
-### Reference Documentation
-For further reference, please consider the following sections:
-
-* [Understanding Amazon Cognito](https://aws.amazon.com/blogs/mobile/understanding-amazon-cognito-user-pool-oauth-2-0-grants/)
-
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.2/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.2/maven-plugin/reference/html/#build-image)
-* [Spring Security](https://docs.spring.io/spring-boot/docs/2.4.2/reference/htmlsingle/#boot-features-security)
-* [OAuth2 Client](https://docs.spring.io/spring-boot/docs/2.4.2/reference/htmlsingle/#boot-features-security-oauth2-client)
-* [OAuth2 Resource Server](https://docs.spring.io/spring-boot/docs/2.4.2/reference/htmlsingle/#boot-features-security-oauth2-server)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.4.2/reference/htmlsingle/#boot-features-developing-web-applications)
-
-### Guides
-The following guides illustrate how to use some features concretely:
-
-* [Securing a Web Application](https://spring.io/guides/gs/securing-web/)
-* [Spring Boot and OAuth2](https://spring.io/guides/tutorials/spring-boot-oauth2/)
-* [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
-
-___
-*[Source information](https://www.harshajayamanna.com/)* 
+Using maven
+```bash
+$ ./run.sh
+```
