@@ -48,7 +48,9 @@ You need to send a POST call to this API `http://18.116.14.98/token-validation` 
 
 That's it.
 
-The winner will be the first person that makes the POST call to the endpoint, to validate that the information will be saved in a DB with the time. 
+The winner will be the first person that makes the POST call to the endpoint to validate that the information will be saved in a DB with the time.
+
+***IMPORTANT NOTE: YOU ALSO NEED TO PROVIDE US YOUR FORKED PROJECT URL***
 
 ## Execution with maven
 
