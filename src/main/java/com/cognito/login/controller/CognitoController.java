@@ -11,6 +11,7 @@ import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.*;
+import org.springframework.security.oauth2.core.oidc.user.OidcUserAuthority;
 import org.springframework.security.oauth2.core.user.*;
 import org.springframework.ui.*;
 import org.springframework.web.bind.annotation.*;
@@ -57,16 +58,17 @@ public class CognitoController {
                     providerImageLogo = getProviderPathImage(providerInformation.getProviderType());
                 }
 
+                List<OidcUserAuthority> authorities = (List<OidcUserAuthority>) authentication.getAuthorities();
+
                 UserInfo userInfo = new UserInfo();
                 userInfo.setUsername(attributes.get("cognito:username").toString());
                 userInfo.setEmail(attributes.get("email").toString());
                 userInfo.setRol(authentication.getAuthorities().toString());
                 userInfo.setProviderInformation(providerInformation);
                 userInfo.setImagePath(providerImageLogo);
+                userInfo.setToken(authorities.get(0).getIdToken().getTokenValue());
 
                 model.addAttribute("userinfo", userInfo);
-
-                logger.info("UserInfo: " + userInfo.toString());
             } catch (Exception e) {
                 logger.warning("Error casting: " + e.getMessage());
             }

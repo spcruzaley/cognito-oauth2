@@ -7,6 +7,7 @@ public class UserInfo {
     private String rol;
     private String imagePath;
     private ProviderInformation providerInformation;
+    private String token;
 
     public UserInfo() {
     }
@@ -51,6 +52,14 @@ public class UserInfo {
         this.providerInformation = providerInformation;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +
@@ -59,6 +68,7 @@ public class UserInfo {
                 ", rol='" + rol + '\'' +
                 ", imagePath='" + imagePath + '\'' +
                 ", providerInformation=" + providerInformation +
+                ", token='" + token + '\'' +
                 '}';
     }
 }
