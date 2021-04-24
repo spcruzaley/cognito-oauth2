@@ -21,6 +21,8 @@ You need to use this information for Cognito configurations
 | App Client ID | 2s092rhdehnag7ocntdib7c2mh |
 | App Secret ID | 1bslbp41j8cvkit7a9pl45tfjuk430oq8gavopa5f5bk6rt6a300 |
 | App Name | appClient |
+| Domain | douloginexample.auth.us-east-2.amazoncognito.com |
+| JWK | https://cognito-idp.us-east-2.amazonaws.com/us-east-2_COsxhTGK5/.well-known/jwks.json |
 
 ### Step 2
 
