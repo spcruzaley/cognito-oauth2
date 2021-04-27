@@ -1,0 +1,20 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          cognito-client-1:
+            client-id: 2s092rhdehnag7ocntdib7c2mh
+            client-secret: 1bslbp41j8cvkit7a9pl45tfjuk430oq8gavopa5f5bk6rt6a300
+            client-name: appClient
+            provider: cognito
+            scope: openid
+            redirect-uri-template: http://localhost:8080/login/oauth2/code/cognito
+            authorization-grant-type: authorization_code
+        provider:
+          cognito:
+            authorization-uri: https://douloginexample.auth.us-east-2.amazoncognito.com/oauth2/authorize
+            token-uri: https://douloginexample.auth.us-east-2.amazoncognito.com/oauth2/token
+            user-info-uri: https://douloginexample.auth.us-east-2.amazoncognito.com/oauth2/userInfo
+            jwk-set-uri: https://cognito-idp.us-east-2.amazonaws.com/us-east-2_COsxhTGK5/.well-known/jwks.json
+            user-name-attribute: cognito:username
