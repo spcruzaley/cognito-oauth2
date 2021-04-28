@@ -50,15 +50,15 @@ April 2021
           <table class="three_third lastbox">
             <tr>
               <td><strong>Username:</strong></td>
-              <td><span th:text="${userinfo}"></span></td>
+              <td><span th:text="${userinfo.username}"></span></td>
             </tr>
             <tr>
               <td><strong>email:</strong></td>
-              <td><span th:text="${userinfo }"></span></td>
+              <td><span th:text="${userinfo.email }"></span></td>
             </tr>
               <tr>
-                  <td><strong>**********************a*************:</strong></td>
-                  <td><span th:text="${tokenInformation}"></span></td>
+                  <td><strong>Token:</strong></td>
+                  <td><span th:text="${userinfo.getToken()}"></span></td>
               </tr>
           </table>
         </article>

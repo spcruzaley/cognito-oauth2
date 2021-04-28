@@ -6,8 +6,17 @@ public class UserInfo {
     private String username;
     private String rol;
     private String imagePath;
+    private String token;
     private ProviderInformation providerInformation;
-
+    
+    public String getToken() {
+        return token;
+    }
+    
+    public void setToken(String token) {
+        this.token = token;
+    }
+    
     public UserInfo() {
     }
 

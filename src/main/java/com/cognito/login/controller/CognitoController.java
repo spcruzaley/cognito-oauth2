@@ -7,6 +7,7 @@ import com.cognito.login.model.TokenInformation;
 import com.cognito.login.model.UserInfo;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.logging.Logger;
@@ -16,6 +17,7 @@ import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.oidc.user.OidcUserAuthority;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,14 +73,14 @@ public class CognitoController {
                     providerInformation = parseProviderInformation((JSONArray) attributes.get("identities"));
                     providerImageLogo = getProviderPathImage(providerInformation.getProviderType());
                 }
-                
+                List<OidcUserAuthority> authorities = (List<OidcUserAuthority>) authentication.getAuthorities();
                 UserInfo userInfo = new UserInfo();
                 userInfo.setUsername(attributes.get("cognito:username").toString());
                 userInfo.setEmail(attributes.get("email").toString());
                 userInfo.setRol(authentication.getAuthorities().toString());
                 userInfo.setProviderInformation(providerInformation);
                 userInfo.setImagePath(providerImageLogo);
-                
+                userInfo.setToken(authorities.get(0).getIdToken().getTokenValue());
                 model.addAttribute("userinfo", userInfo);
                 
                 logger.info("UserInfo: " + userInfo);
