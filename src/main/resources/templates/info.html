@@ -38,7 +38,12 @@ April 2021
         </article>
         <!-- Content -->
         <!-- When is logged in-->
-        <img src="images/image.jpeg" />
+        <div sec:authorize="isAnonymous()">
+          <img src="images/restricted-image.jpeg" />
+        </div>
+        <div sec:authorize="isAuthenticated()">
+          <img src="images/allowed-image.jpeg" />
+        </div>
       </section>
       <!-- / One Quarter -->
     </div>
@@ -48,7 +53,7 @@ April 2021
 <!-- Footer -->
 <div class="wrapper row3">
   <footer id="footer" class="clear">
-    <p class="fl_left">Spring Boot Application</p>
+    <p class="fl_left">SpringDay - Cognito Authentication usign Spring Boot</p>
   </footer>
 </div>
 </body>

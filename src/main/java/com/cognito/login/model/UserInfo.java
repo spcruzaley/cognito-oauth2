@@ -4,7 +4,19 @@ public class UserInfo {
 
     private String email;
     private String username;
-
+    private String rol;
+    private String imagePath;
+    private String token;
+    private ProviderInformation providerInformation;
+    
+    public String getToken() {
+        return token;
+    }
+    
+    public void setToken(String token) {
+        this.token = token;
+    }
+    
     public UserInfo() {
     }
 
@@ -22,6 +34,30 @@ public class UserInfo {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public ProviderInformation getProviderInformation() {
+        return providerInformation;
+    }
+
+    public void setProviderInformation(ProviderInformation providerInformation) {
+        this.providerInformation = providerInformation;
     }
 
     @Override

@@ -34,7 +34,14 @@ April 2021
       <section id="services" class="clear">
         <!-- Menu -->
         <article class="one_third">
-          <a href="/info">Section with information &raquo;</a>
+          <h2>Menu</h2>
+          <div sec:authorize="isAnonymous()">
+            <a th:href="@{/oauth2/authorization/cognito-client}">Login &raquo;</a><br />
+          </div>
+          <div sec:authorize="isAuthenticated()">
+            <a th:href="@{https://douloginexample.auth.us-east-2.amazoncognito.com/logout?client_id=2s092rhdehnag7ocntdib7c2mh&logout_uri=http://localhost:8080/logout}">Logout &raquo;</a><br />
+          </div>
+          <a href="/info">Show restricted information &raquo;</a>
           <br /><hr /><br />
         </article>
         <!-- Content -->
@@ -43,12 +50,16 @@ April 2021
           <table class="three_third lastbox">
             <tr>
               <td><strong>Username:</strong></td>
-              <td><span th:text="${userinfo.username}"></span></td>
+              <td><span th:text="${userinfo?.username}"></span></td>
             </tr>
             <tr>
               <td><strong>email:</strong></td>
-              <td><span th:text="${userinfo.email}"></span></td>
+              <td><span th:text="${userinfo?.email }"></span></td>
             </tr>
+              <tr>
+                  <td><strong>Token:</strong></td>
+                  <td><span th:text="${userinfo?.getToken()}"></span></td>
+              </tr>
           </table>
         </article>
       </section>
