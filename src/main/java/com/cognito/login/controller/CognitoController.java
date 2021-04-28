@@ -61,7 +61,6 @@ public class CognitoController {
         if(authentication != null && authentication.isAuthenticated()) {
             try {
                 //El token lo obtuve de aqui pero no pude castearlo
-                UserDetails userDetails = (UserDetails) authentication.getPrincipal();
                 Map<String, Object> attributes = ((OAuth2User) authentication.getPrincipal()).getAttributes();
                 
                 //If it's null means that the login was with users in Cognito User Pool, in other case, comes from
