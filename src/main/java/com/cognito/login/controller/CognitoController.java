@@ -1,35 +1,32 @@
 package com.cognito.login.controller;
 
-import com.cognito.login.HttpHelper;
-import com.cognito.login.config.TokenInformation;
 import com.cognito.login.model.ProviderInformation;
 import com.cognito.login.model.ProviderType;
 import com.cognito.login.model.UserInfo;
-import java.util.*;
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.client.authentication.*;
 import org.springframework.security.oauth2.core.oidc.user.OidcUserAuthority;
-import org.springframework.security.oauth2.core.user.*;
-import org.springframework.ui.*;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 @RestController
 public class CognitoController {
 
     Logger logger = Logger.getLogger(CognitoController.class.getName());
-
-    @Autowired
-    private HttpHelper httpHelper;
 
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     public Object info(ModelAndView mav) {
@@ -73,26 +70,6 @@ public class CognitoController {
                 logger.warning("Error casting: " + e.getMessage());
             }
         }
-
-        return mav;
-    }
-
-    @RequestMapping(value = "/code", method = RequestMethod.GET)
-    public Object code(@RequestParam(value = "code", required = false) String code,
-                     HttpServletRequest request, ModelAndView mav) throws IOException {
-        logger.info("Home method");
-        TokenInformation tokenInformation = null;
-
-        if(code != null) {
-            logger.info("Code gotten: " + code);
-            logger.info("Getting Token");
-
-            tokenInformation = httpHelper.okHttpClient(code);
-            request.getSession().setAttribute("tokenInformation", tokenInformation);
-        }
-
-        mav.setViewName("home");
-        mav.addObject("tokenInformation", tokenInformation);
 
         return mav;
     }
